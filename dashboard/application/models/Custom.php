@@ -319,6 +319,21 @@ class Custom extends CI_Model
         return $query->result();
     }
 
+
+    function getUsers_District($district )
+    {
+        if (isset($district) && $district != '') {
+            $this->db->where("dist_id", $district);
+        }
+
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where(" (colflag is null OR colflag = '0') ");
+        $this->db->order_By('id', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function getDiagnosis()
     {
         $this->db->select('*');

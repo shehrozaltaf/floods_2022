@@ -109,6 +109,14 @@ class Daily_reports extends CI_controller
         echo json_encode($data, true);
     }
 
+    function getUserByDistrict()
+    {
+        $Model = new Custom();
+        $district = (isset($_REQUEST['district']) && $_REQUEST['district'] != '' && $_REQUEST['district'] != 0 ? $_REQUEST['district'] : 0);
+        $data = $Model->getUsers_District($district);
+        echo json_encode($data, true);
+    }
+
     function getAreaByUCs()
     {
         $Model = new Mdaily_reports();
